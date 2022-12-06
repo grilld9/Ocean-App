@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -23,62 +23,35 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintVertical_bias="0.163" />
 
     <EditText
-        android:id="@+id/inputName"
+        android:id="@+id/inputPhoneNumberL"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45sp"
-        android:layout_marginTop="50sp"
-        android:layout_marginEnd="45sp"
-        android:drawableLeft="@drawable/ic_person"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="45dp"
+        android:drawableLeft="@drawable/ic_phone"
         android:ems="10"
-        android:hint="@string/Name"
+        android:hint="@string/Phone_number"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/inputPhoneNumberL"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:drawableLeft="@drawable/ic_person"
-        android:ems="10"
-        android:hint="@string/Surname"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/inputName"
-        app:layout_constraintStart_toStartOf="@+id/inputName"
-        app:layout_constraintTop_toBottomOf="@+id/inputName" />
-
-    <EditText
         android:id="@+id/inputPasswordL"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:drawableLeft="@drawable/ic_phone"
-        android:ems="10"
-        android:hint="@string/Phone_number"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/inputPhoneNumberL"
-        app:layout_constraintStart_toStartOf="@+id/inputPhoneNumberL"
-        app:layout_constraintTop_toBottomOf="@+id/inputPhoneNumberL" />
-
-    <EditText
-        android:id="@+id/inputPassword"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="35dp"
         android:drawableLeft="@drawable/ic_security"
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/inputPasswordL"
-        app:layout_constraintStart_toStartOf="@+id/inputPasswordL"
-        app:layout_constraintTop_toBottomOf="@+id/inputPasswordL" />
-
+        app:layout_constraintEnd_toEndOf="@+id/inputPhoneNumberL"
+        app:layout_constraintStart_toStartOf="@+id/inputPhoneNumberL"
+        app:layout_constraintTop_toBottomOf="@+id/inputPhoneNumberL" />
 
     <TextView
         android:id="@+id/textView"
@@ -89,21 +62,21 @@
         android:shadowDx="0"
         android:shadowDy="5"
         android:shadowRadius="30"
-        android:text="@string/Register_footer"
+        android:text="@string/Login_footer"
         android:textColor="@color/ocean_main"
-        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword"
+        app:layout_constraintEnd_toEndOf="@+id/inputPasswordL"
+        app:layout_constraintStart_toStartOf="@+id/inputPasswordL"
         tools:layout_editor_absoluteY="606dp" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="100dp"
         android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword"
-        app:srcCompat="@drawable/lets_start_button" />
+        app:layout_constraintEnd_toEndOf="@+id/inputPasswordL"
+        app:layout_constraintStart_toStartOf="@+id/inputPasswordL"
+        app:layout_constraintTop_toBottomOf="@+id/inputPasswordL"
+        app:srcCompat="@drawable/login_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
