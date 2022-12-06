@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Ocean</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="Name">Name</string>
     <string name="Surname">Surname</string>
     <string name="Phone_number">Phone number</string>
     <string name="Password">Password</string>
+    <string name="Lets_start">Let\'s start!</string>
+    <string name="Register_footer">Already have an account?</string>
 </resources>
