@@ -4,12 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ocean_background"
-    tools:context=".InfoFragment">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Info page"
-        android:textSize="30sp"/>
-
-</FrameLayout>
+    tools:context=".InfoFragment"/>
