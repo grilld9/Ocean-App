@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Ocean</string>
-    <string name="Name">Name</string>
-    <string name="Surname">Surname</string>
-    <string name="Phone_number">Phone number</string>
-    <string name="Password">Password</string>
+    <string name="Name"> Name</string>
+    <string name="Surname"> Surname</string>
+    <string name="Phone_number"> Phone number</string>
+    <string name="Password"> Password</string>
     <string name="Lets_start">Let\'s start!</string>
     <string name="Login_footer">Don\'t have an account yet?</string>
     <string name="Register_footer">Already have an account?</string>

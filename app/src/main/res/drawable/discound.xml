@@ -15,5 +15,5 @@
       android:fillColor="#3333FF"/>
   <path
       android:pathData="M252.49,12.93l0,172.07l73.59,-0l-0,-172.07z"
-      android:fillColor="url(#pattern0)"/>
+      android:fillColor="#000000"/>
 </vector>
