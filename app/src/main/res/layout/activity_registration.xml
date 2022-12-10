@@ -7,7 +7,7 @@
     tools:context=".RegistrationActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fredoka_one"
@@ -32,17 +32,17 @@
         android:layout_marginStart="45sp"
         android:layout_marginTop="50sp"
         android:layout_marginEnd="45sp"
+        android:backgroundTint="@color/ocean_main"
         android:drawableLeft="@drawable/ic_person"
         android:ems="10"
         android:hint="@string/Name"
         android:inputType="textPersonName"
-        android:backgroundTint="@color/ocean_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textLogo" />
 
     <EditText
-        android:id="@+id/inputPhoneNumberL"
+        android:id="@+id/inputSurname"
         android:layout_width="0sp"
         android:backgroundTint="@color/ocean_main"
         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
     <EditText
-        android:id="@+id/inputPasswordL"
+        android:id="@+id/inputPhoneNumberR"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
@@ -65,12 +65,12 @@
         android:ems="10"
         android:hint="@string/Phone_number"
         android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="@+id/inputPhoneNumberL"
-        app:layout_constraintStart_toStartOf="@+id/inputPhoneNumberL"
-        app:layout_constraintTop_toBottomOf="@+id/inputPhoneNumberL" />
+        app:layout_constraintEnd_toEndOf="@+id/inputSurname"
+        app:layout_constraintStart_toStartOf="@+id/inputSurname"
+        app:layout_constraintTop_toBottomOf="@+id/inputSurname" />
 
     <EditText
-        android:id="@+id/inputPassword"
+        android:id="@+id/inputPasswordR"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
@@ -79,15 +79,32 @@
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="numberPassword"
-        app:layout_constraintEnd_toEndOf="@+id/inputPasswordL"
-        app:layout_constraintStart_toStartOf="@+id/inputPasswordL"
-        app:layout_constraintTop_toBottomOf="@+id/inputPasswordL" />
+        app:layout_constraintEnd_toEndOf="@+id/inputPhoneNumberR"
+        app:layout_constraintStart_toStartOf="@+id/inputPhoneNumberR"
+        app:layout_constraintTop_toBottomOf="@+id/inputPhoneNumberR" />
 
-
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/buttonReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/Lets_start"
+        android:fontFamily="@font/fredoka_one"
+        android:textSize="22sp"
+        android:paddingBottom="7sp"
+        android:paddingTop="7sp"
+        android:paddingLeft="27sp"
+        android:paddingRight="27sp"
+        android:background="@drawable/roundstyle"
+        app:layout_constraintEnd_toEndOf="@+id/inputPasswordR"
+        app:layout_constraintStart_toStartOf="@+id/inputPasswordR"
+        app:layout_constraintTop_toBottomOf="@+id/inputPasswordR" />
+
+    <TextView
+        android:id="@+id/AlreadyHaveAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
         android:fontFamily="@font/fredoka_one"
         android:shadowColor="@color/main_shadow"
         android:shadowDx="0"
@@ -95,19 +112,8 @@
         android:shadowRadius="30"
         android:text="@string/Register_footer"
         android:textColor="@color/ocean_main"
-        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword"
-        tools:layout_editor_absoluteY="606dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword"
-        app:srcCompat="@drawable/lets_start_button" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonReg"
+        app:layout_constraintStart_toStartOf="@+id/buttonReg"
+        app:layout_constraintTop_toBottomOf="@+id/buttonReg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

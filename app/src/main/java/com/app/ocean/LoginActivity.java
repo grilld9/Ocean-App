@@ -8,6 +8,9 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.content.Intent;
+
+import kotlin.internal.IntrinsicConstEvaluation;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -51,5 +54,12 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+    }
+
+    //move to reg page:
+    public void moveToReg(View v) {
+        Intent intent = new Intent(this, RegistrationActivity.class);
+        startActivity(intent);
     }
 }
