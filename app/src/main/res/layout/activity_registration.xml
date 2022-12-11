@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintVertical_bias="0.168" />
 
     <EditText
         android:id="@+id/inputName"
@@ -42,32 +42,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textLogo" />
 
     <EditText
-        android:id="@+id/inputSurname"
-        android:layout_width="0sp"
-        android:backgroundTint="@color/ocean_main"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:drawableLeft="@drawable/ic_person"
-        android:ems="10"
-        android:hint="@string/Surname"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/inputName"
-        app:layout_constraintStart_toStartOf="@+id/inputName"
-        app:layout_constraintTop_toBottomOf="@+id/inputName" />
-
-    <EditText
         android:id="@+id/inputPhoneNumberR"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/ocean_main"
         android:drawableLeft="@drawable/ic_phone"
         android:ems="10"
         android:hint="@string/Phone_number"
         android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="@+id/inputSurname"
-        app:layout_constraintStart_toStartOf="@+id/inputSurname"
-        app:layout_constraintTop_toBottomOf="@+id/inputSurname" />
+        app:layout_constraintEnd_toEndOf="@+id/inputName"
+        app:layout_constraintStart_toStartOf="@+id/inputName"
+        app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
     <EditText
         android:id="@+id/inputPasswordR"
@@ -76,9 +62,10 @@
         android:layout_marginTop="20sp"
         android:backgroundTint="@color/ocean_main"
         android:drawableLeft="@drawable/ic_security"
+        android:drawableRight="@drawable/ic_baseline_visibility_off_24"
         android:ems="10"
         android:hint="@string/Password"
-        android:inputType="numberPassword"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/inputPhoneNumberR"
         app:layout_constraintStart_toStartOf="@+id/inputPhoneNumberR"
         app:layout_constraintTop_toBottomOf="@+id/inputPhoneNumberR" />
@@ -88,14 +75,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/Lets_start"
-        android:fontFamily="@font/fredoka_one"
-        android:textSize="22sp"
-        android:paddingBottom="7sp"
-        android:paddingTop="7sp"
-        android:paddingLeft="27sp"
-        android:paddingRight="27sp"
         android:background="@drawable/roundstyle"
+        android:fontFamily="@font/fredoka_one"
+        android:paddingLeft="27sp"
+        android:paddingTop="7sp"
+        android:paddingRight="27sp"
+        android:paddingBottom="7sp"
+        android:text="@string/Lets_start"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/inputPasswordR"
         app:layout_constraintStart_toStartOf="@+id/inputPasswordR"
         app:layout_constraintTop_toBottomOf="@+id/inputPasswordR" />
@@ -104,16 +91,17 @@
         android:id="@+id/AlreadyHaveAcc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
+        android:layout_marginBottom="45dp"
         android:fontFamily="@font/fredoka_one"
+        android:onClick="moveToLogin"
         android:shadowColor="@color/main_shadow"
         android:shadowDx="0"
         android:shadowDy="5"
         android:shadowRadius="30"
         android:text="@string/Register_footer"
         android:textColor="@color/ocean_main"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonReg"
-        app:layout_constraintStart_toStartOf="@+id/buttonReg"
-        app:layout_constraintTop_toBottomOf="@+id/buttonReg" />
+        app:layout_constraintStart_toStartOf="@+id/buttonReg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

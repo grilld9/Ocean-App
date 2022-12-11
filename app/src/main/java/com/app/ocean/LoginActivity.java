@@ -62,4 +62,11 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
     }
+
+    //move to main page:
+    public void moveToMain(View v) {
+        //some code for request???
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
