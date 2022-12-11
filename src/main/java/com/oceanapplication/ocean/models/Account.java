@@ -12,7 +12,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name, phoneNumber;
+    private String name, phoneNumber, password;
 
     public Long getId() {
         return id;
@@ -36,5 +36,12 @@ public class Account {
 
     public void setPhoneNumber(String mobilePhone) {
         this.phoneNumber = mobilePhone;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
