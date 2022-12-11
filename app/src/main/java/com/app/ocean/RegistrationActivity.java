@@ -13,8 +13,14 @@ import android.view.textclassifier.TextLinks;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -70,9 +76,26 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String nameVal = name.getText().toString();
                 String phoneNumberVal = phoneNumber.getText().toString();
-                String passwordVal = password.getText().toString();
+                //String passwordVal = password.getText().toString();
 
-                
+
+                OkHttpClient client = new OkHttpClient();
+
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("name", nameVal)
+                        .add("number", phoneNumberVal)
+                        .build();
+
+                Request postRequest = new Request.Builder()
+                        .url("jdbc:mysql://${MYSQL_HOST:localhost}:3306/ocean/account")
+                        .post(requestBody)
+                        .build();
+
+                try {
+                    Response response = client.newCall(postRequest).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
                 Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
