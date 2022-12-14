@@ -85,7 +85,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String url = "http://localhost:8080/demo/add?name=" + nameVal +
                         "&phoneNumber=" + phoneNumberVal + "&password=" + passwordVal;
 
-                
+
                 //Library.main(nameVal, phoneNumberVal, passwordVal);
 
                 //move to main page
