@@ -12,6 +12,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private Long cardId;
     private String phoneNumber;
 
     public Long getId() {
@@ -24,5 +25,13 @@ public class Account {
 
     public void setPhoneNumber(String mobilePhone) {
         this.phoneNumber = mobilePhone;
+    }
+
+    public Long getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(Long cardId) {
+        this.cardId = cardId;
     }
 }
