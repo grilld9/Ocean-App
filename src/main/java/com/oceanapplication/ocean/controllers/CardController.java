@@ -17,7 +17,7 @@ public class CardController {
     }
 
     @GetMapping("/{id}")
-    public Long getCardId(@PathVariable Long id) {
-        return cardService.getCardId(id);
+    public Long getCardId(@PathVariable Long userId) {
+        return cardService.getCardId(userId);
     }
 }

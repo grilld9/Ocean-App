@@ -13,9 +13,9 @@ public class CardService {
         this.accountRepository = accountRepository;
     }
 
-    public Long getCardId(Long id) {
-        return accountRepository.findById(id).orElseThrow(() ->
-            new NoSuchElementException("USER with id='" + id + "' does not exist"))
+    public Long getCardId(Long userId) {
+        return accountRepository.findById(userId).orElseThrow(() ->
+            new NoSuchElementException("USER with id='" + userId + "' does not exist"))
             .getCardId(); // мб переделать
     }
 }

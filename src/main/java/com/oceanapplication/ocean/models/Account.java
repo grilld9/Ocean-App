@@ -10,13 +10,13 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long userID;
 
     private Long cardId;
     private String phoneNumber;
 
-    public Long getId() {
-        return id;
+    public Long getUserID() {
+        return userID;
     }
 
     public String getPhoneNumber() {
