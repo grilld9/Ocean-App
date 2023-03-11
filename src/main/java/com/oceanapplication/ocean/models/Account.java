@@ -11,10 +11,9 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userID;
-
     private Long cardId;
     private String phoneNumber;
-
+    private String password;
     public Long getUserID() {
         return userID;
     }
@@ -33,5 +32,13 @@ public class Account {
 
     public void setCardId(Long cardId) {
         this.cardId = cardId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
