@@ -1,7 +1,7 @@
 package com.oceanapplication.ocean.services;
 
-import com.oceanapplication.ocean.models.Account;
-import com.oceanapplication.ocean.repo.AccountRepository;
+import com.oceanapplication.ocean.models.User;
+import com.oceanapplication.ocean.repo.UserRepository;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +11,14 @@ import java.util.Optional;
 @Service
 public class AuthService {
 
-    private final AccountRepository accountRepository;
+    private final UserRepository userRepository;
 
-    public AuthService(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public AuthService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public ResponseEntity<?> auth(String phoneNumber, String password) {
-        Optional<Account> account = accountRepository.findByPhoneNumber(phoneNumber);
+        Optional<User> account = userRepository.findByPhoneNumber(phoneNumber);
         if (account.isPresent()) {
             if (account.get().getPassword().equals(password)) {
                 return new ResponseEntity<>(account, HttpStatus.OK);
@@ -28,7 +28,8 @@ public class AuthService {
             }
         }
         else {
-            return new ResponseEntity<>("This user doesn't exist!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("User with phone number '" + phoneNumber + "' doesn't exist!"
+                    , HttpStatus.BAD_REQUEST);
         }
     }
 }

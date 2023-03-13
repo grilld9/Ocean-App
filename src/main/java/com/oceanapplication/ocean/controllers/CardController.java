@@ -1,10 +1,8 @@
 package com.oceanapplication.ocean.controllers;
 
 import com.oceanapplication.ocean.services.CardService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path="/card")
@@ -16,8 +14,13 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    @GetMapping("/{id}")
-    public Long getCardId(@PathVariable Long userId) {
+    @GetMapping("/{userId}")
+    public ResponseEntity<?> getCardId(@PathVariable Long userId) {
         return cardService.getCardId(userId);
+    }
+
+    @PostMapping("/{userId}")
+    public String createNewCard(@PathVariable Long userId) {
+        return cardService.createCard(userId);
     }
 }
