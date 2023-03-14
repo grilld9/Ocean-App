@@ -1,6 +1,5 @@
 package com.oceanapplication.ocean.services;
 
-import com.oceanapplication.ocean.configs.UserDetailsImpl;
 import com.oceanapplication.ocean.models.User;
 import com.oceanapplication.ocean.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByPhoneNumber(username);
-        return user.map(UserDetailsImpl::new)
-                .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
+        return user
+            .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
 
     }
 }

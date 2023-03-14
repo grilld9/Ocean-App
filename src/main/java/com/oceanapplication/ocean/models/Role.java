@@ -1,6 +1,6 @@
 package com.oceanapplication.ocean.models;
 
-public enum ERole {
+public enum Role {
     USER,
     ADMIN
 }

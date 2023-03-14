@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "users")
+@Table(name = "_user")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -22,16 +22,16 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String cardId;
     private String phoneNumber;
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private ERole role;
+    private Role role;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Token> tokens;
 
     @Override

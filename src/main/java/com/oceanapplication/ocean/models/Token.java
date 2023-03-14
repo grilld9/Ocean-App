@@ -15,10 +15,13 @@ public class Token {
 
     @Id
     @GeneratedValue
-    public Long id;
+    public int id;
 
     @Enumerated(EnumType.STRING)
     public TokenType tokenType = TokenType.BEARER;
+
+    @Column(unique = true)
+    public String token;
 
     public boolean revoked;
 
