@@ -15,7 +15,7 @@ public class Token {
 
     @Id
     @GeneratedValue
-    public int id;
+    public Long id;
 
     @Enumerated(EnumType.STRING)
     public TokenType tokenType = TokenType.BEARER;

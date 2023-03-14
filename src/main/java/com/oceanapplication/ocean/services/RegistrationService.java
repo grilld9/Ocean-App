@@ -1,33 +1,33 @@
 package com.oceanapplication.ocean.services;
 
+import com.oceanapplication.ocean.dto.AuthResponseDTO;
+import com.oceanapplication.ocean.dto.RegistrationRequestDTO;
+import com.oceanapplication.ocean.models.Role;
 import com.oceanapplication.ocean.models.User;
 import com.oceanapplication.ocean.repo.UserRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
+@RequiredArgsConstructor
 public class RegistrationService {
 
     private final UserRepository userRepository;
-    public RegistrationService(UserRepository userRepository) {
-      this.userRepository = userRepository;
-    }
+    private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthService authService;
 
-    public ResponseEntity<?> regNewAccount(String phoneNumber, String password) {
-        Optional<User> account = userRepository.findByPhoneNumber(phoneNumber);
-        if (account.isPresent()) {
-            return new ResponseEntity<>("Phone number '" + phoneNumber + "' has already existed"
-                    , HttpStatus.BAD_REQUEST);
-        }
-        else {
-            User newUser = new User();
-            newUser.setPhoneNumber(phoneNumber);
-            newUser.setPassword(password);
-            userRepository.save(newUser);
-            return new ResponseEntity<>("Successful registration!", HttpStatus.OK);
-        }
+    public AuthResponseDTO register(RegistrationRequestDTO request) {
+        var user = User.builder()
+                .password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.USER)
+                .build();
+        var savedUser = userRepository.save(user);
+        var jwtToken = jwtService.generateToken(user);
+        authService.saveUserToken(savedUser, jwtToken);
+        return AuthResponseDTO.builder()
+                .token(jwtToken)
+                .build();
     }
 }

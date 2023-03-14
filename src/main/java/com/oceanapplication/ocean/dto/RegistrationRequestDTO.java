@@ -1,14 +1,16 @@
 package com.oceanapplication.ocean.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthDto {
+@Builder
+public class RegistrationRequestDTO {
 
     private String phoneNumber;
-    private String passWord;
+    private String password;
 }
