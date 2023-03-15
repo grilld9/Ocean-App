@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.Random;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,14 +19,11 @@ public class CardService {
         this.userRepository = userRepository;
     }
 
-    public ResponseEntity<?> getCardId(Long userId) {
-        Optional<User> account = userRepository.findById(userId);
-        if (account.get().getCardId() != null) {
-            return new ResponseEntity<>(account.get().getCardId(), HttpStatus.OK);
-        }
-        else {
-            return new ResponseEntity<>("Card haven't generated yet", HttpStatus.BAD_REQUEST);
-        }
+    public String getCardId(Long userId) {
+        var user = userRepository.findByPhoneNumber(request.getPhoneNumber())
+            .orElseThrow(
+                () -> new UsernameNotFoundException("user not found " + request.getPhoneNumber()));
+
     }
 
     public String createCard(Long userId) {

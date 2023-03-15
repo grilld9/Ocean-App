@@ -20,6 +20,7 @@ public class RegistrationService {
 
     public AuthResponseDTO register(RegistrationRequestDTO request) {
         var user = User.builder()
+                .phoneNumber(request.getPhoneNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();

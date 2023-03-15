@@ -16,7 +16,7 @@ public class CardController {
 
     @GetMapping("/{userId}")
     public ResponseEntity<?> getCardId(@PathVariable Long userId) {
-        return cardService.getCardId(userId);
+        return ResponseEntity.ok(cardService.getCardId(userId));
     }
 
     @PostMapping("/{userId}")
