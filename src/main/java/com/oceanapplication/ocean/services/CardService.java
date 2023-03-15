@@ -1,41 +1,32 @@
 package com.oceanapplication.ocean.services;
 
-import com.oceanapplication.ocean.models.User;
-import com.oceanapplication.ocean.repo.UserRepository;
 
-import java.util.Optional;
+import com.oceanapplication.ocean.repo.UserRepository;
 import java.util.Random;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CardService {
 
     private final UserRepository userRepository;
 
-    public CardService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public String getCardNumber(String phoneNumber) {
+        var user = userRepository.findByPhoneNumber(phoneNumber).orElseThrow(
+                () -> new UsernameNotFoundException("user not found"));
+        if (user.getCardId() == null) {
+            user.setCardId(generateNewCardId());
+            userRepository.save(user);
+        }
+        return user.getCardId();
     }
 
-    public String getCardId(Long userId) {
-        var user = userRepository.findByPhoneNumber(request.getPhoneNumber())
-            .orElseThrow(
-                () -> new UsernameNotFoundException("user not found " + request.getPhoneNumber()));
-
-    }
-
-    public String createCard(Long userId) {
-        Optional<User> account = userRepository.findById(userId);
-        String generatedCardId = generateNewCardId();
-        account.get().setCardId(generatedCardId);
-        return generatedCardId;
-    }
 
     /**
-     * Test version of generating barcode.
-     * @return random generated value
+     * Test version of generating barcode EAN13.
+     * @return random generated barcode EAN13
      */
     public String generateNewCardId() {
         return Long.toString(new Random().nextLong(1000000000000L,10000000000000L));
