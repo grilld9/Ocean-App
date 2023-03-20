@@ -24,11 +24,10 @@ public class Promo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    String head;
-    String body;
-    Boolean isActive;
-
     @Lob
-    @Column(name = "image",length = 1000)
+    @Column(name = "imagedata",length = 1000)
     private byte[] imageData;
+
+    private String head;
+    private String body;
 }
