@@ -30,4 +30,5 @@ public class Promo {
 
     private String head;
     private String body;
+    private Boolean active;
 }

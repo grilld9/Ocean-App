@@ -1,10 +1,11 @@
 package com.oceanapplication.ocean.controllers;
 
 import com.oceanapplication.ocean.dto.PromoCreateRequestDTO;
+import com.oceanapplication.ocean.dto.PromoResponseDTO;
 import com.oceanapplication.ocean.services.PromoService;
 import java.io.IOException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,23 +24,38 @@ public class PromoController {
     private final PromoService promoService;
 
     @PostMapping
-    public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile file,
+    public ResponseEntity<String> addNewPost(@RequestParam("image") MultipartFile file,
         @RequestParam("head") String head, @RequestParam("body") String body) throws IOException {
         PromoCreateRequestDTO request = PromoCreateRequestDTO.builder()
             .image(file)
             .head(head)
             .body(body)
             .build();
-        String uploadImage = promoService.uploadImage(request);
-        return ResponseEntity.ok(uploadImage);
+        promoService.addNewPost(request);
+        return ResponseEntity.ok("Post added " + head);
     }
 
     @GetMapping("/{head}")
     public ResponseEntity<?> downloadImage(@PathVariable String head) throws IOException {
-        byte[] imageData = promoService.downloadImage(head);
-        return ResponseEntity.status(HttpStatus.OK)
+        return ResponseEntity.ok()
             .contentType(MediaType.valueOf("image/png"))
-            .body(imageData);
+            .body(promoService.getPost(head));
+    }
 
+    @GetMapping("/show")
+    public ResponseEntity<List<PromoResponseDTO>> getAllActivePromos() {
+        return ResponseEntity.ok(promoService.getAllActivePromos());
+    }
+
+    @PostMapping("/activate/{head}")
+    private ResponseEntity<String> activatePromo(@PathVariable String head) {
+        promoService.activatePromo(head);
+        return ResponseEntity.ok("Successful promo activation!" + head);
+    }
+
+    @PostMapping("/deactivate/{head}")
+    private ResponseEntity<String> deactivatePromo(@PathVariable String head) {
+        promoService.deactivatePromo(head);
+        return ResponseEntity.ok("Successful promo deactivation!" + head);
     }
 }
