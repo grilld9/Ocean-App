@@ -1,5 +1,6 @@
 package com.oceanapplication.ocean.configs;
 
+import com.oceanapplication.ocean.models.User;
 import com.oceanapplication.ocean.repo.TokenRepository;
 import com.oceanapplication.ocean.services.JwtService;
 import com.oceanapplication.ocean.services.UserDetailsServiceImpl;
@@ -10,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -38,7 +38,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         jwt = authHeader.substring(7);
         phoneNumber = jwtService.extractUsername(jwt);
         if (phoneNumber != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(phoneNumber);
+            User userDetails = userDetailsService.loadUserByUsername(phoneNumber);
             var isTokenValid = tokenRepository.findByToken(jwt)
                     .map(t -> !t.isExpired() && !t.isRevoked())
                     .orElse(false);
