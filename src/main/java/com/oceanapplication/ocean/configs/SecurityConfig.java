@@ -37,6 +37,7 @@ public class SecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests()
                     .requestMatchers("/auth", "/reg").permitAll()
+                    .requestMatchers("promo/activate/**").hasAuthority("ROLE_ADMIN")
                     .anyRequest().authenticated()
                 .and()
                     .sessionManagement()
