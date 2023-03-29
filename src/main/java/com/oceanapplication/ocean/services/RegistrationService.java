@@ -24,6 +24,9 @@ public class RegistrationService {
     private final RoleRepository roleRepository;
 
     public AuthResponseDTO register(RegistrationRequestDTO request) {
+        userRepository.findByPhoneNumber(request.getPhoneNumber())
+            .orElseThrow(() -> new UnsupportedOperationException(
+                "User " + request.getPhoneNumber() + " has already registered"));
         Set<Role> roles = new HashSet<>();
         roles.add(roleRepository.findByName("ROLE_USER")); //TODO test it
         var user = User.builder()
