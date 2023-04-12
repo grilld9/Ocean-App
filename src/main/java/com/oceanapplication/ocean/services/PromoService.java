@@ -10,11 +10,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class PromoService {
+
+    private static final int PAGE_SIZE = 20;
 
     private final PromoRepository promoRepository;
 
@@ -40,8 +45,9 @@ public class PromoService {
         return ImageUtil.decompressImage(dbImageData);
     }
 
-    public List<PromoResponseDTO> getAllActivePromos() {
-        List<Promo> promos = promoRepository.findByActive(true);
+    public List<PromoResponseDTO> getAllActivePromos(Integer pageNumber) {
+        Page<Promo> promos = promoRepository.findByActive(true,
+            PageRequest.of(pageNumber, PAGE_SIZE));
         List<PromoResponseDTO> response = new LinkedList<>();
         for (Promo promo : promos) {
             response.add(PromoResponseDTO.builder()

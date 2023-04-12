@@ -42,9 +42,9 @@ public class PromoController {
             .body(promoService.getPost(head));
     }
 
-    @GetMapping("/show")
-    public ResponseEntity<List<PromoResponseDTO>> getAllActivePromos() {
-        return ResponseEntity.ok(promoService.getAllActivePromos());
+    @GetMapping("/show/{page}")
+    public ResponseEntity<List<PromoResponseDTO>> getAllActivePromos(@PathVariable Integer page) {
+        return ResponseEntity.ok(promoService.getAllActivePromos(page));
     }
 
     @PostMapping("/activate/{head}")
