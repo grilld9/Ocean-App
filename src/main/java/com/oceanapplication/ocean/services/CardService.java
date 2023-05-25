@@ -29,6 +29,6 @@ public class CardService {
      * @return random generated barcode EAN13
      */
     public String generateNewCardId() {
-        return Long.toString(new Random().nextLong(1000000000000L,10000000000000L));
+        Call<AccessToken> call = ApiFactory.getService().getToken(CARDCODE);
     }
 }
