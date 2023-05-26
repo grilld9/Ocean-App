@@ -37,19 +37,18 @@ public class PromoController {
         return ResponseEntity.ok("Post added " + head);
     }
 
-    @GetMapping("/{head}")
+    /*@GetMapping("/{head}")
     public ResponseEntity<?> downloadImage(@PathVariable String head) throws IOException {
         return ResponseEntity.ok()
-            .contentType(MediaType.valueOf("image/png"))
+            .contentType(MediaType.valueOf("image/jpg"))
             .body(promoService.getPost(head));
-    }
+    }*/
 
     @GetMapping("/show/{page}")
     public ResponseEntity<List<PromoResponseDTO>> getAllActivePromos(@PathVariable Integer page) {
         return ResponseEntity.ok(promoService.getAllActivePromos(page));
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/activate/{head}")
     private ResponseEntity<String> activatePromo(@PathVariable String head) {
         promoService.activatePromo(head);
