@@ -1,6 +1,6 @@
 package com.oceanapplication.ocean.factories;
 
-import com.oceanapplication.ocean.services.ApiService;
+//import com.oceanapplication.ocean.services.ApiService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -14,8 +14,8 @@ public class ApiFactory {
             .build();
     }
 
-    public static ApiService getService() {
+    /*public static ApiService getService() {
         return buildRetrofit().create(ApiService.class);
-    }
+    }*/
 
 }
