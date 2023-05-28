@@ -24,13 +24,14 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public AuthResponseDTO auth(AuthRequestDTO request) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                request.getPhoneNumber(),
-                request.getPassword()
-        ));
         var user = userRepository.findByPhoneNumber(request.getPhoneNumber())
                 .orElseThrow(
                         () -> new UsernameNotFoundException("user not found " + request.getPhoneNumber()));
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                request.getPhoneNumber(),
+                request.getPassword(),
+                user.getAuthorities() // TODO test it
+        ));
             var jwtToken = jwtService.generateToken(user);
             revokeAllUserTokens(user);
             saveUserToken(user, jwtToken);

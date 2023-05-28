@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,13 +39,15 @@ public class PromoService {
             .build());
     }
 
+    /*@Transactional(readOnly = true)
     public byte[] getPost(String promoHead) throws IOException {
         var dbImageData = promoRepository.findByHead(promoHead).orElseThrow(()
                 -> new IOException("Cannot find promo with head" + promoHead))
             .getImageData();
         return ImageUtil.decompressImage(dbImageData);
-    }
+    }*/
 
+    @Transactional(readOnly = true)
     public List<PromoResponseDTO> getAllActivePromos(Integer pageNumber) {
         Page<Promo> promos = promoRepository.findByActive(true,
             PageRequest.of(pageNumber, PAGE_SIZE));
@@ -59,6 +62,7 @@ public class PromoService {
         return response;
     }
 
+    @Transactional
     public void activatePromo(String head) {
         Promo promo = promoRepository.findByHead(head).orElseThrow(()
             -> new NoSuchElementException("Promo not found: " + head));
@@ -66,6 +70,7 @@ public class PromoService {
         promoRepository.save(promo);
     }
 
+    @Transactional
     public void deactivatePromo(String head) {
         Promo promo = promoRepository.findByHead(head).orElseThrow(()
             -> new NoSuchElementException("Promo not found:" + head));

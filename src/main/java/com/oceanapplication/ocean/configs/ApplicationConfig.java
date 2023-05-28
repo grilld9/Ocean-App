@@ -1,6 +1,7 @@
-package com.oceanapplication.ocean.configs;
+/*package com.oceanapplication.ocean.configs;
 
 import com.oceanapplication.ocean.repo.UserRepository;
+import com.oceanapplication.ocean.services.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,15 +15,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@RequiredArgsConstructor
 public class ApplicationConfig {
-
-    private final UserRepository userRepository;
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> userRepository.findByPhoneNumber(username)
-            .orElseThrow(() -> new UsernameNotFoundException("User not found" + username));
+        return new UserDetailsServiceImpl();
     }
 
     @Bean
@@ -33,7 +30,7 @@ public class ApplicationConfig {
         return authProvider;
     }
 
-    @Bean
+    /*@Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
@@ -44,3 +41,4 @@ public class ApplicationConfig {
     }
 
 }
+*/

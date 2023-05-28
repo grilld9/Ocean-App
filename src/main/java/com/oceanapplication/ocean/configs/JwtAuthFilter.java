@@ -1,5 +1,6 @@
 package com.oceanapplication.ocean.configs;
 
+import com.oceanapplication.ocean.models.User;
 import com.oceanapplication.ocean.repo.TokenRepository;
 import com.oceanapplication.ocean.services.JwtService;
 import com.oceanapplication.ocean.services.UserDetailsServiceImpl;
@@ -38,7 +39,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         jwt = authHeader.substring(7);
         phoneNumber = jwtService.extractUsername(jwt);
         if (phoneNumber != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(phoneNumber);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(phoneNumber);
             var isTokenValid = tokenRepository.findByToken(jwt)
                     .map(t -> !t.isExpired() && !t.isRevoked())
                     .orElse(false);
